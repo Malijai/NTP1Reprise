@@ -8,7 +8,7 @@ from .widgets import DatePickerInput, TimePickerInput, DateTimePickerInput
 class PersonneForm(forms.ModelForm):
     class Meta:
         model = Personnegrcntp1
-        fields = ('dateprint2', 'newpresencefps','datedeces')
+        fields = ('dateprint2', 'newpresencefps','confidentiel', 'datedeces')
         exclude = ('codeGRC', 'province', 'delit', 'assistant', 'newdelit')
         widgets = {
                     'dateprint2' : DatePickerInput(),

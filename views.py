@@ -82,8 +82,10 @@ def personne_edit(request, pk):
             personne.RA = request.user
             #print(request.POST.get('dateprint2').__class__)
             newfps = request.POST.get('newpresencefps')
-            #print("bbb ", str(newfps))
-            if str(newfps) == "None":
+            confidentiel = request.POST.get('confidentiel')
+#            print("aaa ", str(newfps))
+#            print("bbb ", str(confidentiel))
+            if str(newfps) == "false" or (str(newfps) == "true" and str(confidentiel) == "true"):
                 personne.ferme = 1
                 personne.save()
                 messages.success(request, _(u"Pas de dossier pour cette personne,le dossier a été fermé."))

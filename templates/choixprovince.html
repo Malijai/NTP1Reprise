@@ -10,7 +10,6 @@
     <div class="w3-container w3-padding-10">
         <form method="POST" class="province-form" enctype="multipart/form-data" id="province">
                        {% csrf_token %}
-
             <select name="provinceid" >
                 <option value="">Choisir la province</option>
             {% for province in provinces %}
@@ -19,6 +18,7 @@
             </select>
             <button type="submit" class="w3-button w3-orange" name="Choisir">{% trans "Choisir la province" %}</button>
         </form>
+
     </div>
     <footer>
         <div class="w3-row w3-theme-d3">
