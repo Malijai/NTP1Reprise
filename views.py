@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.apps import apps
 from .models import NouveauxDelitsntp1, Personnegrcntp1, Municipalite, Liberationntp1, Province
 from django.contrib import messages
@@ -148,6 +148,13 @@ def personne_edit(request, pk):
 #  #       form.fields['dateprint2'].widget = DateTimePickerInput(format='%d/%m/%Y')
 #  #       form.fields['dateverdictder'].widget = DateTimePickerInput(format='%d/%m/%Y')
 #     return render(request, "personne_edit.html", {'my_form': form, 'entete': entete, 'personne': personne})
+
+@login_required(login_url=settings.LOGIN_URI)
+def supp_delit(request, id):
+    delit = get_object_or_404(NouveauxDelitsntp1, id=id)
+    NouveauxDelitsntp1.objects.filter(id=id).delete()
+    messages.success(request, _(u'Un délit de {} a été suprimé').format(delit.personnegrc))
+    return redirect(personne_delits, delit.personnegrc_id)
 
 
 ## Permet sur une même page d'enregistrer les délits, les libérations et de voir ce qui est déjà rentré

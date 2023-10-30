@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.urls import include, path
-from .views import liste_personne, personne_delits, personne_ferme, do_dico_pdf, personne_edit, choix_province
+from .views import liste_personne, personne_delits, personne_ferme, do_dico_pdf, personne_edit, choix_province, supp_delit
 
 
 urlpatterns = [
@@ -10,5 +10,6 @@ urlpatterns = [
     path('<int:pi>/', liste_personne, name='liste_personne'),
     path('ferme/<int:pk>/',personne_ferme, name='personne_ferme'),
     path('do_pdf/', do_dico_pdf, name='do_dico_pdf'),
+    path('enleve/<int:id>/', supp_delit, name='supp_delit'),
 
 ]

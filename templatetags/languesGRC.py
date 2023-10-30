@@ -16,10 +16,8 @@ def faitvaleurslangue(table, lang, nom_champ, *args, **kwargs):
     default = ''
     if table == "Duree" or table == "Type":
         default = '998'
-
     else:
         default = ''
-
     return question.render(nom_champ, default)
 
 
@@ -35,3 +33,5 @@ def fait_liste_tables(listevaleurs, lang):
             nen = valeur.reponse_fr
             liste.append((val, nen))
     return liste
+
+

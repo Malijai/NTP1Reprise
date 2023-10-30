@@ -3,7 +3,7 @@
 
 {% block maincontent %}
 <div class="w3-container">
-   <h2 class="w3-amber">#{{ personne.codeGRC }}- {% trans "Nouveaux delits et Délits enregistrés dans la BD" %}</h2>
+   <h2 class="w3-amber">#{{ personne.codeGRC }} - {{ personne.prenom }}- {% trans "Nouveaux delits et Délits enregistrés dans la BD" %}</h2>
 </div>
 <div class="w3-row-padding">
     <div class="w3-container w3-theme-l4 w3-cell w3-mobile">
@@ -82,15 +82,17 @@
             <h3> {% trans "Délits enregistrés dans la BD" %}</h3>
             <table class="w3-table-all">
                 <tr>
-                    <th>{% trans "date sentence" %}</th>
-                    <th>{% trans "ordre" %}</th>
-                    <th>{% trans "codeCCdelit" %}</th>
+                    <th>{% trans "Date sentence" %}</th>
+                    <th>{% trans "Ordre" %}</th>
+                    <th>{% trans "CodeCCdelit" %}</th>
+                    <th>{% trans "Action" %}</th>
                 </tr>
             {% for delit in delits %}
             <tr>
                 <td>{{ delit.date_sentence }}</td>
                 <td>{{ delit.ordre_delit }}</td>
                 <td>{{ delit.codeCCdelit }}</td>
+                <td><a class="w3-btn w3-red w3-hover-purple" href="{% url 'supp_delit' delit.id %}">{% trans "Suprimer" %}</a></td>
             </tr>
             {% endfor %}
             </table>
